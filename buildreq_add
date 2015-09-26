@@ -44,3 +44,9 @@ testtools
 testtools-python
 traceback2-python
 unittest2-python
+oslo.i18n
+oslo.i18n-python
+debtcollector-python
+funcsigs-python
+wrapt-python
+monotonic-python
