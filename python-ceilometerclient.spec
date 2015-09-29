@@ -4,7 +4,7 @@
 #
 Name     : python-ceilometerclient
 Version  : 1.5.0
-Release  : 12
+Release  : 13
 URL      : http://tarballs.openstack.org/python-ceilometerclient/python-ceilometerclient-1.5.0.tar.gz
 Source0  : http://tarballs.openstack.org/python-ceilometerclient/python-ceilometerclient-1.5.0.tar.gz
 Summary  : OpenStack Telemetry API Client Library
