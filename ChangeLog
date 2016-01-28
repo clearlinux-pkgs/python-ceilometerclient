@@ -1,6 +1,47 @@
 CHANGES
 =======
 
+2.3.0
+-----
+
+* Remove argparse from requirements
+* drop oslo-incubator modules: cliutils and uuidutils
+* Updated from global requirements
+* remove unused code
+* fix project_id and user_id fields not set when create gnocchi alarm
+* Updated from global requirements
+* improve help docs for cli commands
+* change the dict output format to make consistency under py27 and py34
+
+2.2.1
+-----
+
+* Only token or creds are required
+
+2.2.0
+-----
+
+* Fix to disable meter-links from CLI
+* Use the oslo.utils.reflection to extract the class name
+* remove py24 compatible code
+* Don't copy the auth_plugin for aodh
+* Remove openstack-common.conf
+* Use assertTrue/False instead of assertEqual(T/F)
+* Improve ceilometer alarm enabled input parameter validation
+* Updated from global requirements
+* Replace assertEqual(None, *) with assertIsNone in tests
+* remove MANIFEST.in
+* Updated from global requirements
+* Restructuring a comment in Python-Ceilometerclient
+* Deprecated tox -downloadcache option removed
+* Revert "Delete python bytecode before every test run"
+* Remove duplicated assert
+* Delete python bytecode before every test run
+* Fix Python 3 version announced in metadata
+* Remove py26 support
+* Fix the parameter order of assertEqual in ceilometerclient
+* Fix Resource.__eq__ mismatch semantics of object equal
+
 2.1.0
 -----
 
