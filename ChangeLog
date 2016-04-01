@@ -1,6 +1,15 @@
 CHANGES
 =======
 
+2.4.0
+-----
+
+* Updated from global requirements
+* Decouple ceilometerclient without aodh services running
+* Enhances client to support unique meter retrieval
+* make aggregation-method argument as a mandatory field
+* Update .gitreview for stable/mitaka
+
 2.3.0
 -----
 
