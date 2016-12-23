@@ -4,7 +4,7 @@
 #
 Name     : python-ceilometerclient
 Version  : 2.4.0
-Release  : 26
+Release  : 27
 URL      : http://tarballs.openstack.org/python-ceilometerclient/python-ceilometerclient-2.4.0.tar
 Source0  : http://tarballs.openstack.org/python-ceilometerclient/python-ceilometerclient-2.4.0.tar
 Summary  : OpenStack Telemetry API Client Library
@@ -16,16 +16,19 @@ BuildRequires : Babel-python
 BuildRequires : Jinja2-python
 BuildRequires : Pygments-python
 BuildRequires : Sphinx-python
+BuildRequires : configparser-python
 BuildRequires : coverage-python
 BuildRequires : debtcollector-python
 BuildRequires : discover-python
 BuildRequires : docutils-python
+BuildRequires : enum34-python
 BuildRequires : extras
 BuildRequires : extras-python
 BuildRequires : fixtures-python
 BuildRequires : flake8-python
 BuildRequires : funcsigs-python
 BuildRequires : hacking-python
+BuildRequires : imagesize-python
 BuildRequires : iso8601-python
 BuildRequires : linecache2-python
 BuildRequires : markupsafe-python
@@ -47,7 +50,7 @@ BuildRequires : pluggy
 BuildRequires : prettytable-python
 BuildRequires : py-python
 BuildRequires : pyflakes-python
-BuildRequires : pyrsistent-python
+BuildRequires : pyparsing-python
 BuildRequires : pytest
 BuildRequires : python-dev
 BuildRequires : python-keystoneclient-python
@@ -61,7 +64,6 @@ BuildRequires : setuptools
 BuildRequires : six
 BuildRequires : six-python
 BuildRequires : stevedore-python
-BuildRequires : tempest-lib-python
 BuildRequires : testrepository-python
 BuildRequires : testtools
 BuildRequires : testtools-python
@@ -105,6 +107,7 @@ python components for the python-ceilometerclient package.
 %setup -q -n python-ceilometerclient-2.4.0
 
 %build
+export LANG=C
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
