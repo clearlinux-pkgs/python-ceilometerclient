@@ -4,7 +4,7 @@
 #
 Name     : python-ceilometerclient
 Version  : 2.4.0
-Release  : 27
+Release  : 28
 URL      : http://tarballs.openstack.org/python-ceilometerclient/python-ceilometerclient-2.4.0.tar
 Source0  : http://tarballs.openstack.org/python-ceilometerclient/python-ceilometerclient-2.4.0.tar
 Summary  : OpenStack Telemetry API Client Library
@@ -108,6 +108,7 @@ python components for the python-ceilometerclient package.
 
 %build
 export LANG=C
+export SOURCE_DATE_EPOCH=1484567289
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -117,9 +118,10 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python2.7/site-packages python2 setup.py test
 %install
+export SOURCE_DATE_EPOCH=1484567289
 rm -rf %{buildroot}
-python2 -tt setup.py build -b py2 install --root=%{buildroot}
-python3 -tt setup.py build -b py3 install --root=%{buildroot}
+python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 
 %files
 %defattr(-,root,root,-)
