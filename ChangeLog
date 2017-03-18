@@ -1,18 +1,73 @@
 CHANGES
 =======
 
-2.4.0
+2.8.0
 -----
 
+* Enable coverage report in console output
+* cleanup aodh redirect
+* panko redirect
+* cleanup aodh mocks
+* [doc] Note lack of constraints is a choice
+* Adding default project and domain if nothing is specified
+* Don't include openstack/common in flake8 exclude list
+* Add __ne__ built-in function
+* Bump hacking to 0.12
+* move old oslo-incubator code out of openstack/common
+* Make method import_versioned_module work
+
+2.7.0
+-----
+
+* Fixes SSLError during cclient.meters.list() by https
+* Set code and details on HTTPException
+* Enable release notes translation
+* Using assertIsNone() instead of assertEqual(None)
+* Replace assertEqual(None, ...) with assertIsNone(...)
+* Deprecate alarms commands
+* Update reno for stable/newton
+* Fix from_response method to process response from requests
+
+2.6.0
+-----
+
+* [trivial] add a blank character
+* Correct the parameters's position of assertEqual
+* Remove keystoneclient dependency
+* Add support for Python 3.5
+* Remove discover from test-requirements
+
+2.5.0
+-----
+
+* tools: remove unused scripts
+* base.Resource not define __ne__() built-in function
+* Ignore aodh_endpoint argument
+* Switch to keystoneauth
+* Correct the usage of the method assertEqual()
+* Update the home-page with developer documentation
+* Update to hacking 0.11.0
+* Only install hacking in pep8
 * Updated from global requirements
+* Enable releasenotes documentation
+* Updated from global requirements
+* Switch from deprecated tempest-lib to tempest
+* Updated from global requirements
+* Fix the disorder of items of Traits in the output of event-list
+* remove default value of repeat-actions
 * Decouple ceilometerclient without aodh services running
+* Trivial: remove `None` as a redundant argument to dict.get()
+* Updated from global requirements
+* Updated from global requirements
 * Enhances client to support unique meter retrieval
+* Fixing a word spelling
+* Updated from global requirements
 * make aggregation-method argument as a mandatory field
-* Update .gitreview for stable/mitaka
 
 2.3.0
 -----
 
+* improve readme contents
 * Remove argparse from requirements
 * drop oslo-incubator modules: cliutils and uuidutils
 * Updated from global requirements
