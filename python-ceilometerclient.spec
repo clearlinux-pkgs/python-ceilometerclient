@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xB9069B1335700CDC (infra-root@openstack.org)
 #
 Name     : python-ceilometerclient
-Version  : 2.8.0
-Release  : 30
-URL      : http://tarballs.openstack.org/python-ceilometerclient/python-ceilometerclient-2.8.0.tar.gz
-Source0  : http://tarballs.openstack.org/python-ceilometerclient/python-ceilometerclient-2.8.0.tar.gz
-Source99 : http://tarballs.openstack.org/python-ceilometerclient/python-ceilometerclient-2.8.0.tar.gz.asc
+Version  : 2.8.1
+Release  : 31
+URL      : http://tarballs.openstack.org/python-ceilometerclient/python-ceilometerclient-2.8.1.tar.gz
+Source0  : http://tarballs.openstack.org/python-ceilometerclient/python-ceilometerclient-2.8.1.tar.gz
+Source99 : http://tarballs.openstack.org/python-ceilometerclient/python-ceilometerclient-2.8.1.tar.gz.asc
 Summary  : OpenStack Telemetry API Client Library
 Group    : Development/Tools
 License  : Apache-2.0
@@ -54,19 +54,22 @@ python components for the python-ceilometerclient package.
 
 
 %prep
-%setup -q -n python-ceilometerclient-2.8.0
+%setup -q -n python-ceilometerclient-2.8.1
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1489853144
+export SOURCE_DATE_EPOCH=1490709667
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1489853144
+export SOURCE_DATE_EPOCH=1490709667
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+echo ----[ mark ]----
+cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
+echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
