@@ -6,7 +6,7 @@
 #
 Name     : python-ceilometerclient
 Version  : 2.8.1
-Release  : 31
+Release  : 32
 URL      : http://tarballs.openstack.org/python-ceilometerclient/python-ceilometerclient-2.8.1.tar.gz
 Source0  : http://tarballs.openstack.org/python-ceilometerclient/python-ceilometerclient-2.8.1.tar.gz
 Source99 : http://tarballs.openstack.org/python-ceilometerclient/python-ceilometerclient-2.8.1.tar.gz.asc
