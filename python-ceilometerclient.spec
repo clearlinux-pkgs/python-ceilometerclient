@@ -6,17 +6,17 @@
 #
 Name     : python-ceilometerclient
 Version  : 2.9.0
-Release  : 38
+Release  : 39
 URL      : http://tarballs.openstack.org/python-ceilometerclient/python-ceilometerclient-2.9.0.tar.gz
 Source0  : http://tarballs.openstack.org/python-ceilometerclient/python-ceilometerclient-2.9.0.tar.gz
-Source99 : http://tarballs.openstack.org/python-ceilometerclient/python-ceilometerclient-2.9.0.tar.gz.asc
-Summary  : OpenStack Telemetry API Client Library
+Source1  : http://tarballs.openstack.org/python-ceilometerclient/python-ceilometerclient-2.9.0.tar.gz.asc
+Summary  : Python client library for Ceilometer
 Group    : Development/Tools
 License  : Apache-2.0
-Requires: python-ceilometerclient-bin
-Requires: python-ceilometerclient-python3
-Requires: python-ceilometerclient-license
-Requires: python-ceilometerclient-python
+Requires: python-ceilometerclient-bin = %{version}-%{release}
+Requires: python-ceilometerclient-license = %{version}-%{release}
+Requires: python-ceilometerclient-python = %{version}-%{release}
+Requires: python-ceilometerclient-python3 = %{version}-%{release}
 Requires: iso8601
 Requires: keystoneauth1
 Requires: oslo.i18n
@@ -27,18 +27,50 @@ Requires: requests
 Requires: six
 Requires: stevedore
 BuildRequires : buildreq-distutils3
+BuildRequires : iso8601
+BuildRequires : keystoneauth1
+BuildRequires : oslo.i18n
+BuildRequires : oslo.serialization
+BuildRequires : oslo.utils
 BuildRequires : pbr
-BuildRequires : pip
-BuildRequires : python3-dev
-BuildRequires : setuptools
+BuildRequires : requests
+BuildRequires : six
+BuildRequires : stevedore
 
 %description
+Python bindings to the Ceilometer API
 =====================================
+
+.. image:: https://img.shields.io/pypi/v/python-ceilometerclient.svg
+    :target: https://pypi.python.org/pypi/python-ceilometerclient/
+    :alt: Latest Version
+
+.. image:: https://img.shields.io/pypi/dm/python-ceilometerclient.svg
+    :target: https://pypi.python.org/pypi/python-ceilometerclient/
+    :alt: Downloads
+
+This is a client library for Ceilometer built on the Ceilometer API. It
+provides a Python API (the ``ceilometerclient`` module) and a command-line tool
+(``ceilometer``).
+
+* `PyPi`_ - package installation
+* `Online Documentation`_
+* `Launchpad project`_ - release management
+* `Blueprints`_ - feature specifications
+* `Bugs`_ - issue tracking
+* `Source`_
+
+.. _PyPi: https://pypi.python.org/pypi/python-ceilometerclient
+.. _Online Documentation: http://docs.openstack.org/developer/python-ceilometerclient
+.. _Launchpad project: https://launchpad.net/python-ceilometerclient
+.. _Blueprints: https://blueprints.launchpad.net/python-ceilometerclient
+.. _Bugs: https://bugs.launchpad.net/python-ceilometerclient
+.. _Source: https://git.openstack.org/cgit/openstack/python-ceilometerclient
 
 %package bin
 Summary: bin components for the python-ceilometerclient package.
 Group: Binaries
-Requires: python-ceilometerclient-license
+Requires: python-ceilometerclient-license = %{version}-%{release}
 
 %description bin
 bin components for the python-ceilometerclient package.
@@ -55,7 +87,7 @@ license components for the python-ceilometerclient package.
 %package python
 Summary: python components for the python-ceilometerclient package.
 Group: Default
-Requires: python-ceilometerclient-python3
+Requires: python-ceilometerclient-python3 = %{version}-%{release}
 
 %description python
 python components for the python-ceilometerclient package.
@@ -65,6 +97,7 @@ python components for the python-ceilometerclient package.
 Summary: python3 components for the python-ceilometerclient package.
 Group: Default
 Requires: python3-core
+Provides: pypi(python-ceilometerclient)
 
 %description python3
 python3 components for the python-ceilometerclient package.
@@ -72,20 +105,29 @@ python3 components for the python-ceilometerclient package.
 
 %prep
 %setup -q -n python-ceilometerclient-2.9.0
+cd %{_builddir}/python-ceilometerclient-2.9.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1532380954
-python3 setup.py build -b py3
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1583211262
+# -Werror is for werrorists
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
+export MAKEFLAGS=%{?_smp_mflags}
+python3 setup.py build
 
 %install
+export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/python-ceilometerclient
-cp LICENSE %{buildroot}/usr/share/doc/python-ceilometerclient/LICENSE
-python3 -tt setup.py build -b py3 install --root=%{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/python-ceilometerclient
+cp %{_builddir}/python-ceilometerclient-2.9.0/LICENSE %{buildroot}/usr/share/package-licenses/python-ceilometerclient/57aed0b0f74e63f6b85cce11bce29ba1710b422b
+python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -98,8 +140,8 @@ echo ----[ mark ]----
 /usr/bin/ceilometer
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/python-ceilometerclient/LICENSE
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/python-ceilometerclient/57aed0b0f74e63f6b85cce11bce29ba1710b422b
 
 %files python
 %defattr(-,root,root,-)
