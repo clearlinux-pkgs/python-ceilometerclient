@@ -6,7 +6,7 @@
 #
 Name     : python-ceilometerclient
 Version  : 2.9.0
-Release  : 40
+Release  : 41
 URL      : http://tarballs.openstack.org/python-ceilometerclient/python-ceilometerclient-2.9.0.tar.gz
 Source0  : http://tarballs.openstack.org/python-ceilometerclient/python-ceilometerclient-2.9.0.tar.gz
 Source1  : http://tarballs.openstack.org/python-ceilometerclient/python-ceilometerclient-2.9.0.tar.gz.asc
